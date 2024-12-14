@@ -106,7 +106,7 @@ Finalmente, el archivo app.py se ejecuta en un servidor para habilitar la funcio
 Se crea un repositorio en GitHub con el propósito gestionar el proyecto de forma colaborativa y ordenada. En este repositorio se almacenaron todos los archivos clave como: archivo README.md, el código Analisis_ColombiaFinal, app.py, index.html, styles.css, 
 
 
-![Imagen del Formulario](img/img_formulario.png)
+![Imagen del Formulario](img/img_Formulario.png)
 
 
 # Integrantes
