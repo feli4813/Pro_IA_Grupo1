@@ -1,0 +1,72 @@
+/* Fondo degradado */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #74ebd5, #9face6); /* Degradado azul y verde */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+}
+
+/* Contenedor principal */
+.formulario {
+    width: 350px;
+    padding: 25px;
+    background-color: #ffffff; /* Fondo blanco para contraste */
+    border-radius: 10px; /* Esquinas redondeadas */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra */
+    text-align: center;
+}
+
+/* Estilo del título */
+.formulario h2 {
+    margin-bottom: 20px;
+    color: #2c3e50; /* Azul oscuro */
+}
+
+/* Campos del formulario */
+.formulario label {
+    font-weight: bold;
+    color: #2c3e50;
+    display: block;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.formulario select, 
+.formulario button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.formulario select:focus {
+    outline: none;
+    border-color: #74ebd5; /* Azul claro */
+}
+
+/* Botón estilizado */
+.formulario button {
+    background-color: #2ecc71; /* Verde sostenibilidad */
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.formulario button:hover {
+    background-color: #27ae60; /* Verde más oscuro */
+}
+
+
+#resultado {
+    margin-top: 10px;
+    font-weight: bold;
+    color: green; /* Puedes cambiar el color según tu preferencia */
+}

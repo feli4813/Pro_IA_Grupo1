@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto IA Grupo 1</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="formulario">
+        <h1>Producción De Energia Renovable</h1>
+        
+        <form id="form-prediccion" action="/prediccion" method="post">
+            <label for="tipo_energia">Tipo de Energía:</label>
+            <select name="tipo_energia" id="tipo_energia">
+                <option value="Geothermal">Energía Geotérmica</option>
+                <option value="Hydro">Hidroeléctrica</option>
+                <option value="Solar">Solar</option>
+                <option value="Wind">Eólica</option>
+            </select><br/>
+
+            <label for="ano">Año:</label>
+            <select name="ano" id="ano">
+                <option value="2025">2025</option>
+                <option value="2026">2026</option>
+                <option value="2027">2027</option>
+                <option value="2028">2028</option>
+                <option value="2029">2029</option>
+                <option value="2030">2030</option>
+            </select><br/>
+
+            <label for="mes">Mes:</label>
+            <select name="mes" id="mes">
+                <option value="1">Enero</option>
+                <option value="2">Febrero</option>
+                <option value="3">Marzo</option>
+                <option value="4">Abril</option>
+                <option value="5">Mayo</option>
+                <option value="6">Junio</option>
+                <option value="7">Julio</option>
+                <option value="8">Agosto</option>
+                <option value="9">Septiembre</option>
+                <option value="10">Octubre</option>
+                <option value="11">Noviembre</option>
+                <option value="12">Diciembre</option>
+            </select><br/><br/>
+
+            <button type="submit">Consultar</button>
+        </form>
+        <div id="resultado" style="margin-top: 20px; font-size: 18px;"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Manejo del envío del formulario y solicitud al servidor
+        $(document).ready(function() {
+            $('#form-prediccion').submit(function(event) {
+                event.preventDefault(); // Prevenir el envío estándar del formulario
+
+                // Serializar los datos del formulario
+                var formData = $(this).serialize();
+
+                // Realizar la solicitud AJAX
+                $.ajax({
+                    type: 'POST',
+                    url: '/prediccion',
+                    data: formData,
+                    success: function(response) {
+                        if (response.prediccion) {
+                            // Mostrar el resultado en el contenedor
+                            $('#resultado').html(`<b>Predicción de Producción GWh:</b> ${response.prediccion}`);
+                        } else if (response.error) {
+                            // Mostrar error si ocurre
+                            $('#resultado').html(`<b>Error:</b> ${response.error}`);
+                        } else {
+                            // Manejo genérico si no hay resultados
+                            $('#resultado').html("No se encontraron resultados para la consulta.");
+                        }
+                    },
+                    error: function() {
+                        // Manejo del error de conexión
+                        $('#resultado').html("Ocurrió un error al procesar la solicitud.");
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
